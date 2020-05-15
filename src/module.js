@@ -1,1 +1,1 @@
-console.log('testmoduleJS')
+console.log('Test module working')
