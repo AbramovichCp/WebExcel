@@ -4,9 +4,13 @@ const CODES = {
 }
 
 const createRow = (content, index = '') => {
+  const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
   return (`
     <div class="row">
-      <div class="row-info">${index}</div>
+      <div class="row-info">
+        ${index}
+        ${resize}
+      </div>
       <div class="row-data">${content}</div>
     </div>
  `)
@@ -14,7 +18,10 @@ const createRow = (content, index = '') => {
 
 const toColumn = (col) => {
   return (`
-    <div class="column">${col}</div>
+    <div class="column">
+      ${col}
+      <div class="col-resize" data-resize="col"></div>
+    </div>
  `)
 }
 
@@ -37,8 +44,6 @@ export function createTable(rowsCount = 15) {
   const rows = []
 
   const columns = arrayOfChar().map(el => toColumn(el)).join('')
-  // eslint-disable-next-line no-debugger
-  debugger
   rows.push(createRow(columns))
 
   for (let i = 0; i <= columnCount; i++) {
