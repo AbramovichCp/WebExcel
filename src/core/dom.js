@@ -49,6 +49,12 @@ class Dom {
     return this.$el.querySelectorAll(selector)
   }
 
+  css(styles = {}) {
+    Object.keys(styles).forEach(prop => {
+      this.$el.style[prop] = styles[prop]
+    })
+  }
+
   closest(selector) {
     return $(this.$el.closest(selector))
   }
