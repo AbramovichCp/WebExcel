@@ -29,6 +29,7 @@ const toCell = (colIndex, rowIndex) => {
   return (`
     <div
       class="cell"
+      data-type="cell"
       data-col=${colIndex}
       data-id=${rowIndex}:${colIndex}
       contenteditable>
