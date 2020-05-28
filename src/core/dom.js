@@ -45,6 +45,18 @@ class Dom {
     return this.$el.dataset
   }
 
+  find(selector) {
+    return $(this.$el.querySelector(selector))
+  }
+
+  addClass(className) {
+    this.$el.classList.add(className)
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className)
+  }
+
   findAll(selector) {
     return this.$el.querySelectorAll(selector)
   }
