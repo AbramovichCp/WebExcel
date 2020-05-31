@@ -1,4 +1,4 @@
-const CODES = {
+export const CODES = {
   A: 65,
   Z: 90,
 }
@@ -31,6 +31,7 @@ const toCell = (colIndex, rowIndex) => {
       class="cell"
       data-type="cell"
       data-col=${colIndex}
+      data-row=${rowIndex}
       data-id=${rowIndex}:${colIndex}
       contenteditable>
     </div>
