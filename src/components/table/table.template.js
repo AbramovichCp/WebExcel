@@ -1,7 +1,4 @@
-export const CODES = {
-  A: 65,
-  Z: 90,
-}
+import { CODES } from '@core/utils'
 
 const createRow = (content, index = '') => {
   const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''

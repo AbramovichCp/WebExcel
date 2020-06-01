@@ -1,3 +1,8 @@
+export const CODES = {
+  A: 65,
+  Z: 90,
+}
+
 export function capitalize(str) {
   if (typeof str !== 'string') {
     return ''
@@ -7,6 +12,20 @@ export function capitalize(str) {
 
 export function getDataSelector(id) {
   return `[data-id="${id}"]`
+}
+
+export function increaseChar(char) {
+  let code = char.charCodeAt(0)
+  if (code === CODES.Z) return char
+  code++
+  return String.fromCharCode(code)
+}
+
+export function decreaseChar(char) {
+  let code = char.charCodeAt(0)
+  if (code === CODES.A) return char
+  code--
+  return String.fromCharCode(code)
 }
 
 export function matrix(target, current) {
