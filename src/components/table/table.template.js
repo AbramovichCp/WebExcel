@@ -1,7 +1,4 @@
-const CODES = {
-  A: 65,
-  Z: 90,
-}
+import { CODES } from '@core/utils'
 
 const createRow = (content, index = '') => {
   const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
@@ -25,9 +22,16 @@ const toColumn = (col) => {
  `)
 }
 
-const toCell = (colIndex) => {
+const toCell = (colIndex, rowIndex) => {
   return (`
-    <div class="cell" data-col=${colIndex} contenteditable></div>
+    <div
+      class="cell"
+      data-type="cell"
+      data-col=${colIndex}
+      data-row=${rowIndex}
+      data-id=${rowIndex}:${colIndex}
+      contenteditable>
+    </div>
  `)
 }
 
@@ -46,11 +50,11 @@ export function createTable() {
   const columns = arrayOfChar().map(toColumn).join('')
   rows.push(createRow(columns))
 
-  for (let i = 0; i <= rowsCount; i++) {
+  for (let row = 0; row <= rowsCount; row++) {
     const cells = arrayOfChar()
-        .map((el) => toCell(el))
+        .map((colIndex) => toCell(colIndex, row + 1))
         .join('')
-    rows.push(createRow(cells, i + 1))
+    rows.push(createRow(cells, row + 1))
   }
 
   return rows.join('')
