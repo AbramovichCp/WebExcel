@@ -13,9 +13,11 @@ const INITIAL_CELL_SELECTOR = '[data-id="1:A"]'
 export class Table extends ExcelComponent {
   static className = 'excel__table'
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
+      name: 'Table',
       listeners: ['mousedown', 'keydown'],
+      ...options,
     })
   }
 
@@ -29,7 +31,9 @@ export class Table extends ExcelComponent {
 
   init() {
     super.init()
-
+    this.emitter.subscribe('text', (text) => {
+      this.selection.current.text(text)
+    })
     const $cell = this.$root.find(INITIAL_CELL_SELECTOR)
     this.selection.select($cell)
   }

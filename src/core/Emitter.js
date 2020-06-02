@@ -1,9 +1,9 @@
-export default class Emmiter {
+export default class Emitter {
   constructor() {
     this.listeners = []
   }
 
-  dispach(event, ...args) {
+  dispatch(event, ...args) {
     if (!Array.isArray(this.listeners[event])) {
       return false
     }
