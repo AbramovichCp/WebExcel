@@ -19,7 +19,7 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(event) {
-    this.emitter.dispatch('text', event.target.textContent)
+    this.$dispatch('forma:input', event.target.textContent)
   }
 
   onClick(event) {

@@ -31,11 +31,12 @@ export class Table extends ExcelComponent {
 
   init() {
     super.init()
-    this.emitter.subscribe('text', (text) => {
-      this.selection.current.text(text)
-    })
     const $cell = this.$root.find(INITIAL_CELL_SELECTOR)
     this.selection.select($cell)
+
+    this.$on('forma:input', (text) => {
+      this.selection.current.text(text)
+    })
   }
 
   onMousedown(event) {
@@ -73,6 +74,10 @@ export class Table extends ExcelComponent {
       const $next = this.$root.find(nextSelector(key, id))
       this.selection.select($next)
     }
+  }
+
+  destroy() {
+    super.destroy()
   }
 }
 
